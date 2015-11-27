@@ -57,6 +57,12 @@ public class PdfTreeContextMenu {
 
     public static JPopupMenu getPopupMenu(final Component component) {
         JPopupMenu popup = new JPopupMenu();
+
+        JMenuItem inspect = new JMenuItem();
+        inspect.setText("Inspect Object");
+        inspect.setAction(new InspectObjectAction("Inspect Object", component));
+        popup.add(inspect);
+
         JMenuItem saveRawToFile = new JMenuItem();
         saveRawToFile.setText("Save Raw Bytes to File");
         saveRawToFile.setAction(new SaveToFilePdfTreeAction("Save Raw Bytes to File", component, true));
