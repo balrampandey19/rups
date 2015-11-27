@@ -10,7 +10,7 @@
 	<groupId>com.itextpdf</groupId>
 	<artifactId>itext-rups</artifactId>
 	<name>itext-rups</name>
-	<version>5.5.8-SNAPSHOT</version>
+	<version>5.5.8</version>
 	<description>Rups, a tool to view PDF structure in a swing gui.</description>
 	<url>http://www.itextpdf.com/</url>
 	<mailingLists>
@@ -226,7 +226,7 @@
 		<dependency>
 			<groupId>com.itextpdf</groupId>
 			<artifactId>itextpdf</artifactId>
-			<version>5.5.8-SNAPSHOT</version>
+			<version>5.5.8</version>
 			<type>jar</type>
 			<scope>compile</scope>
 		</dependency>
