@@ -65,7 +65,7 @@ public class StructureTreeNode extends IconTreeNode {
 	public StructureTreeNode(PdfObjectTreeNode node, String icon) {
 		super(icon);
 		this.object_node = node;
-		if (node.isDictionary()) {
+		if (node != null && node.isDictionary()) {
 			PdfDictionary dict = (PdfDictionary)node.getPdfObject();
 			if (dict.get(PdfName.TYPE) == null || dict.checkType(PdfName.STRUCTELEM)) {
 				StringBuffer buf = new StringBuffer();
