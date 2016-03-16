@@ -10,7 +10,7 @@
   </parent>
 
   <artifactId>itext-rups</artifactId>
-  <version>5.5.9-SNAPSHOT</version>
+  <version>5.5.10-SNAPSHOT</version>
 
   <name>itext-rups</name>
   <description>RUPS, a tool to view PDF structure in a swing gui.</description>
