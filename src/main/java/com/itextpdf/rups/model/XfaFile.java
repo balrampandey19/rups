@@ -47,6 +47,7 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.io.StringReader;
 
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
@@ -55,6 +56,9 @@ import org.dom4j.io.SAXReader;
 import org.dom4j.io.XMLWriter;
 
 import com.itextpdf.rups.io.OutputStreamResource;
+import org.xml.sax.EntityResolver;
+import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
 
 /** Class that deals with the XFA file that can be inside a PDF file. */
 public class XfaFile implements OutputStreamResource {
@@ -76,6 +80,7 @@ public class XfaFile implements OutputStreamResource {
 		resource.writeTo(baos);
 		ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
 		SAXReader reader = new SAXReader();
+		reader.setEntityResolver(new SafeEmptyEntityResolver());
 		xfaDocument = reader.read(bais);
 	}
 
@@ -97,5 +102,11 @@ public class XfaFile implements OutputStreamResource {
 		OutputFormat format = new OutputFormat("   ", true);
         XMLWriter writer = new XMLWriter(os, format);
         writer.write(xfaDocument);
+	}
+
+	private static class SafeEmptyEntityResolver implements EntityResolver {
+		public InputSource resolveEntity(String publicId, String systemId) throws SAXException, IOException {
+			return new InputSource(new StringReader(""));
+		}
 	}
 }
